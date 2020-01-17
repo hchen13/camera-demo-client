@@ -27,7 +27,7 @@ if __name__ == '__main__':
         grayscale = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         if motion.detect(grayscale):
             results = con.query(frame)
-            draw_vips(frame, results)
+            draw_vips(frame, results, padding=10)
 
         motion.update(grayscale)
 
