@@ -10,3 +10,7 @@ Security camera VIP recognition demo with TechForce (client)
 运行命令：
 
 ``python app.py``
+
+# 参数说明
+
+在文件(app.py)[/app.py]
