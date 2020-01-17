@@ -30,6 +30,7 @@ if __name__ == '__main__':
             results = con.query(frame)
             tock = datetime.now()
             print("[info] querying results takes {}".format(tock - tick))
+            print(results)
             if feed:
                 draw_vips(frame, results, padding=10)
 
