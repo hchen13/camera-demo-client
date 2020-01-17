@@ -26,8 +26,12 @@ if __name__ == '__main__':
 
         grayscale = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         if motion.detect(grayscale):
+            tick = datetime.now()
             results = con.query(frame)
-            draw_vips(frame, results, padding=10)
+            tock = datetime.now()
+            print("[info] querying results takes {}".format(tock - tick))
+            if feed:
+                draw_vips(frame, results, padding=10)
 
         motion.update(grayscale)
 
@@ -35,7 +39,8 @@ if __name__ == '__main__':
         elapsed = (datetime.now() - t_0).total_seconds()
         fps = frame_count / elapsed
         print("FPS:", fps)
-        display_fps(frame, fps)
+        if feed:
+            display_fps(frame, fps)
         if frame_count > 1000:
             frame_count = 0
             t_0 = datetime.now()
@@ -45,3 +50,5 @@ if __name__ == '__main__':
         key = cv2.waitKey(1) & 0xff
         if key == ord('q'):
             break
+
+        print()
